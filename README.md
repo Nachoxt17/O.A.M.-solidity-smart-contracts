@@ -173,12 +173,12 @@ For a complete introduction to Hardhat, refer to [this guide](https://hardhat.or
 - OAMarketplace.sol:
 
 - The Platform Owner can Register an User who passed the K.Y.C. Process(The Function Creates a Verification Hash and associates it to the User Address):
-```sh
+```solidity
 function addVerified(address addr) public onlyOwner isVerifiedAddress(addr) isNotCancelled(addr)
 ```
 
 - The Platform Owner can Delete a Registered User:
-```sh
+```solidity
 function removeVerified(address addr) public onlyOwner isVerifiedAddress(addr)
 ```
 
@@ -187,7 +187,7 @@ function removeVerified(address addr) public onlyOwner isVerifiedAddress(addr)
 _The N.F.T.-I.T.O.-D.A.O. S.C. is Deployed_
 
 - Function for the Platform Owner to Cancel the original Address of an User and reissue the Tokens to the Replacement Address:
-```sh
+```solidity
 function cancelAndReissue(address original, address replacement)
 public
 onlyOwner
@@ -197,7 +197,7 @@ isVerifiedAddress(replacement)
 ```
 
 - Function for the ArtWork Owner to change the Initial Price of the N.F.T. and its Shares if the I.T.O/Normal Auction did not Started yet:
-```sh
+```solidity
 function setNFTInitialPrice(uint256 nftPrice)
 public
 onlyCollector
@@ -205,7 +205,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Function for the ArtWork Owner to Set the Initial Amount of Token Shares if the I.T.O/Normal Auction did not Started yet:
-```sh
+```solidity
 function setNFTInitialTokenShares(uint256 tokenSharesAmount)
 public
 onlyCollector
@@ -213,7 +213,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Function for the ArtWork Owner to change the I.T.O. Time in Days if the I.T.O did not Started yet:
-```sh
+```solidity
 function setNewITOtime(uint256 newTime)
 public
 onlyCollector
@@ -222,13 +222,13 @@ isVerifiedAddress(msg.sender)
 
 - When the ArtWork Owner wants to Start the I.T.O., We Transfer the N.F.T. from the Admin's Wallet to the O.A.MarketPlace
 Smart Contract, we Divide it in Shares and We sell it in an I.T.O:
-```sh
+```solidity
 function startIto() public onlyCollector isVerifiedAddress(msg.sender)
 ```
 
 - Function for the ArtWork Owner to Withdraw the Profits in Fiat ERC-20 Token after the I.T.O finished
 and the Shares of the N.F.T. that have not been Sold at the I.T.O:
-```sh
+```solidity
 function withdrawItoProfits()
 public
 onlyCollector
@@ -236,7 +236,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Starts the Voting Cycle Registering the Different Proposals that Will be available to Compete between each other:
-```sh
+```solidity
 function startProposalRegistration()
 public
 onlyCollector
@@ -244,7 +244,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Ends the Registration of Different Proposals that Will be available to Compete between each other:
-```sh
+```solidity
 function endProposalRegistration()
 public
 onlyCollector
@@ -252,12 +252,12 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Function for the ArtWork Owner to change the Default Time in Days of Voting:
-```sh
+```solidity
 function setDefaultVotingDays(uint256 days)
 ```
 
 - Starts the Voting between the Different Proposals:
-```sh
+```solidity
 function startVotingSession()
 public
 onlyCollector
@@ -265,14 +265,14 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Ends the Voting between the Different Proposals ONLY after the set Voting Time have passed:
-```sh
+```solidity
 function endVotingSession()
 public
 onlyCollector
 ```
 
 - The ArtWork Owner can Delete a Proposal:
-```sh
+```solidity
 function deleteProposalAdmin(uint256 id)
 public
 onlyCollector
@@ -280,12 +280,12 @@ isVerifiedAddress(msg.sender)
 ```
 
 - The ArtWork Owner executes the Counting of Votes:
-```sh
+```solidity
 function countVotes() public onlyCollector isVerifiedAddress(msg.sender)
 ```
 
 - ArtWork Owner ReSets the Voting Cycle so another new Voting with new Proposals can take place:
-```sh
+```solidity
 function resetVotingSession()
 public
 onlyCollector
@@ -296,14 +296,14 @@ isVerifiedAddress(msg.sender)
 - OAMNFTandDAOTemplate.sol:
 
 - Function for the Users to Buy Shares of the N.F.T. at the I.T.O:
-```sh
+```solidity
 function buyShare(uint256 shareAmount)
 public
 isVerifiedAddress(msg.sender)
 ```
 
 - Token Shares Holders can add Proposals to being voted:
-```sh
+```solidity
 function addProposal(string memory description)
 public
 allowListed
@@ -311,7 +311,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Token Shares Holders can Delete the Proposals that they Added:
-```sh
+```solidity
 function deleteProposal(uint256 id)
 public
 allowListed
@@ -319,7 +319,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Users can Vote for the Proposals:
-```sh
+```solidity
 function vote(uint256 proposalId, bool yesOrNo)
 public
 allowListed
@@ -330,7 +330,7 @@ isVerifiedAddress(msg.sender)
 - OAMNarketplace.sol:
 
 - Function for any Verified User to make an offer to Sell Token Shares in the P2P Market:
-```sh
+```solidity
 function placeSellOffer(
 address tokenShareAsset,
 uint256 assetAmount,
@@ -340,7 +340,7 @@ uint256 pricePerToken
 ```
 
 - Function for any Verified User to make an offer to Buy Token Shares in the P2P Market:
-```sh
+```solidity
 function placeBuyOffer(
 address tokenShareAsset,
 uint256 assetAmount,
@@ -350,7 +350,7 @@ uint256 pricePerToken
 ```
 
 - Function for any Verified User to Accept other User's offer to Sell Token Shares in the P2P Market(This User Will Buy):
-```sh
+```solidity
 function takeSellOffer(uint256 sellOfferId, uint256 assetAmount)
 public
 payable
@@ -359,7 +359,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Function for any Verified User to Accept other User's offer to Buy Token Shares in the P2P Market(This User Will Sell):
-```sh
+```solidity
 function takeBuyOffer(uint256 buyOfferId, uint256 assetAmount)
 public
 payable
@@ -368,7 +368,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Users can Call this Function when they want to Withdraw an Offer that they Placed:
-```sh
+```solidity
 function withdrawOffer(uint256 offerId)
 public
 payable
@@ -377,7 +377,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Returns all the UnFulfilled P2P Market Trade Offers:
-```sh
+```solidity
 function fetchP2PMarketOffers()
 public
 view
@@ -388,7 +388,7 @@ returns (TokenShareTradeOffer[] memory)
 - OAMNarketplace.sol:
 
 - Function that any Verified User can call to Buy Instantly an ArtWork N.F.T.:
-```sh
+```solidity
 function NFTBuyOut(address nftAddress)
 public
 payable
@@ -397,7 +397,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - An ArtWork Owner Places an Item for sale on the Marketplace after a Voting in the D.A.O. Determines that:
-```sh
+```solidity
 function createMarketItem(address nftContract, uint256 price)
 public
 payable
@@ -406,7 +406,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - An ArtWork Owner Removes an item for sale on the Marketplace:
-```sh
+```solidity
 function removeMarketItem(address nftContract)
 public
 payable
@@ -415,7 +415,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Creates the sale of a Marketplace Item. Transfers ownership of the item, as well as funds between parties:
-```sh
+```solidity
 function createMarketSale(address nftContract, uint256 itemId)
 public
 payable
@@ -424,7 +424,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - An ArtWork Owner Places an item for sale in an English Auction on the Marketplace after a Voting in the D.A.O. Determines that:
-```sh
+```solidity
 function createMarketEnglishAuction(
 address nftContract,
 uint256 startingPrice,
@@ -433,7 +433,7 @@ uint256 daysAuctionEndTime
 ```
 
 - Creates a Bid for a Marketplace EnglishAuction:
-```sh
+```solidity
 function bidEnglishAuction(uint256 itemId, uint256 bidAmount)
 public
 payable
@@ -445,7 +445,7 @@ isVerifiedAddress(msg.sender)
 Owner (If the I.T.O. did not happened yet, otherwise it will reward all the Token Share Holders) in the case that someone Bided for
 the N.F.T. OR to Remove the Listed Item from the Marketplace and return the N.F.T. to the ArtWork Owner (If the I.T.O. did not happened
 yet, otherwise it stay in the Marketplace S.C.) if nobody bided:
-```sh
+```solidity
 function englishAuctionEnd(address nftContract, uint256 itemId)
 public
 nonReentrant
@@ -453,7 +453,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - An ArtWork Owner Places an item for sale in an Dutch Auction on the Marketplace after a Voting in the D.A.O. Determines that:
-```sh
+```solidity
 function createMarketDutchAuction(
 address nftContract,
 uint256 startingPrice,
@@ -463,7 +463,7 @@ uint256 daysAuctionEndTime
 ```
 
 - Get the Current price of a Dutch Auction in the Default Fiat Token of the D.A.O. of the N.F.T.:
-```sh
+```solidity
 function getCurrentPriceDucthAuction(uint256 itemId)
 public
 view
@@ -471,7 +471,7 @@ returns (uint256)
 ```
 
 - Creates the Sale for the first and only Bidder in a Marketplace Dutch Auction:
-```sh
+```solidity
 function createDutchAuctionSale(address nftContract, uint256 itemId)
 public
 payable
@@ -481,7 +481,7 @@ isVerifiedAddress(msg.sender)
 
 - This function needs to be Manually Called when the Time of a DutchAuction finished and nobody bided to Remove the Listed Item
 from the Marketplace and return the N.F.T. to the Seller:
-```sh
+```solidity
 function dutchAuctionEnd(address nftContract, uint256 itemId)
 public
 nonReentrant
@@ -489,7 +489,7 @@ isVerifiedAddress(msg.sender)
 ```
 
 - Function for ArtWork N.F.T. D.A.O. Token Share Holders to Claim their Rewards after the ArtWork is sold by BuyOut/Auction/MarketSale:
-```sh
+```solidity
 function claimBuyOutOrAuctionReward(address nftAddress)
 public
 isVerifiedAddress(msg.sender)
