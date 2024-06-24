@@ -2,8 +2,6 @@
 
 - Users can Connect their Wallets and are able to buy Possession Fractions (Stocks in the form of ERC-884 Tokens) of Real World Physical Pieces of Art (Represented in the Platform as ERC-721 Tokens) from several Artists in a Transparent (All users must go through a Know Your Customer Process) and Fiat Friendly (Users will be able to exchange Fiat for Crypto and vice versa without much technical knowledge) way with the aim of Investing in these Works of Art for the Long Term (Years or Even Decades).
 
-https://app.skiff.org/docs/a09a24da-12b6-4258-a5a3-d415eac4b617#ERsUwIDRoyc5VDRDYN32hewtVWMkRB2JkQPMcGcsu7c=
-
 ## For Testing the Successful S.C. DEMO Deployed in the Mumbai Polygon TestNet:
 
 Smart Contract deployed with the account: ------------------
